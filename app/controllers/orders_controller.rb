@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+  def show
+    @order = current_user.orders.find(params[:id])
+  end
+
   def create
     bike = Bike.find(params[:bike_id])
     order  = Order.create!(bike: bike, bike_sku: bike.sku, amount: bike.price, state: 'pending', user: current_user)
