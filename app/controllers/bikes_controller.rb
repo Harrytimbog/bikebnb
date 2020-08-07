@@ -3,7 +3,7 @@ class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bike = Bike.all
+    @bikes = Bike.all
   end
 
   def show
@@ -14,6 +14,13 @@ class BikesController < ApplicationController
   end
 
   def create
+    @bike = Bike.new(bike_params)
+    @bike.owner = current_user
+    if @bike.save
+      redirect_to bikes_path, notice: 'Bike was successfully created'
+    else
+      render :new, notice: 'something went wrong'
+    end
   end
 
   def edit

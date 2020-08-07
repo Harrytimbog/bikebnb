@@ -1,2 +1,13 @@
-<h1>Bikes#show</h1>
-<p>Find me in app/views/bikes/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Category: <%= @bike.category %></h3>
+      <br>
+      <strong>Name: <%= @bike.name %></strong>
+      <p><%= @bike.sku  %></p>
+      <%= cl_image_tag @bike.photo.key, height: 300, width: 350, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: 'm-1 text-center' %>
+
+    </div>
+  </div>
+  <%= link_to "back", root_path %>
+</div>

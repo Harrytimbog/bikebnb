@@ -1,7 +1,7 @@
-<%= simple_form_for [@bike], remote: true do |f|  %>
+<%= simple_form_for (@bike) do |f|  %>
   <%= f.input :name, label: 'What is your bike\'s name?' %>
-  <%= f.input :sku, label: 'What is the Stock Keeping Unit?' %>
+  <%= f.input :sku, label: 'What is the SKU?' %>
   <%= f.input :category, label: "What's the category of the bike?"  %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit%>
+  <%= f.submit "Add your bike!", class: "btn btn-primary"%>
 <% end %>
