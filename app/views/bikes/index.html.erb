@@ -7,6 +7,7 @@
 
         <%= bike.name  %>
         <%= bike.category  %>
+        <p>Amount: <%= humanized_money_with_symbol(bike.price) %></p>
         </div>
         <%= link_to "", bike_path(bike), class: 'card-link' %>
       </div>

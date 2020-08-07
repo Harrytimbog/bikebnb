@@ -5,6 +5,8 @@
       <br>
       <strong>Name: <%= @bike.name %></strong>
       <p><%= @bike.sku  %></p>
+      <p>Amount: <%= humanized_money_with_symbol(@teddy.price) %></p>
+
       <%= cl_image_tag @bike.photo.key, height: 300, width: 350, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: 'm-1 text-center' %>
 
     </div>
