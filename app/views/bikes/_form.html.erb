@@ -1,0 +1,7 @@
+<%= simple_form_for [@bike], remote: true do |f|  %>
+  <%= f.input :name, label: 'What is your bike\'s name?' %>
+  <%= f.input :sku, label: 'What is the Stock Keeping Unit?' %>
+  <%= f.input :category, label: "What's the category of the bike?"  %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit%>
+<% end %>
