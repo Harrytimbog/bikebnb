@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :owned_bikes, foreign_key: :owner_id, class_name: "Bike", dependent: :destroy
   has_many :orders
+  has_one_attached :avatar
 end
