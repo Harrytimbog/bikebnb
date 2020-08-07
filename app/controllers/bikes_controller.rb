@@ -27,9 +27,16 @@ class BikesController < ApplicationController
   end
 
   def update
+    if @bike.update(bike_params)
+      redirect_to @bike, notice: 'bike was successfully update.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @bike.destroy
+    redirect_to root_path, notice: 'post was successfully destroyed.'
   end
 
   def my_own
