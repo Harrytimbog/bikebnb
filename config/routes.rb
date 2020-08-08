@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'reviews/create'
   get 'reviews/destroy'
   devise_for :users
-  root to: 'bikes#index'
+  root to: 'pages#home'
 
   resources :bikes do
     resources :reviews

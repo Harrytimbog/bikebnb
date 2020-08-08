@@ -1,0 +1,54 @@
+.content {
+  position: fixed;
+  color: $off-white;
+  padding: 320px;
+  background-color: $light-green;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("https://images.unsplash.com/photo-1464336939748-2d8412c5d19d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1495&q=80");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+}
+
+.content h1 {
+  font-family: $header-font;
+  font-size: 50px;
+  color: #e9F6BF;
+  text-transform: uppercase;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.content p {
+  font-family: $base-font;
+  color: #C8D9DA;
+  font-size: 25px;
+  text-align: center;
+}
+
+// This is up to phone size
+@media(max-width: 768px) {
+  .content {
+    padding: 0;
+    width: auto;
+    height: 100%;
+    p {
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 20px;
+      padding-top: 180px;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+
+// This is up to tablet size
+@media(max-width: 992px) {
+  .content {
+  }
+}
