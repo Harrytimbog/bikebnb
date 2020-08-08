@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-sm-12 col-md-6">
+      <%= cl_image_tag @bike.photo.key, height: 300, width: 350, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: 'm-1 text-center' %>
+    </div>
+    <div class="col-sm-12 col-md-6">
       <h3>Category: <%= @bike.category %></h3>
-      <br>
       <strong>Name: <%= @bike.name %></strong>
       <p><%= @bike.sku  %></p>
       <p>Amount: <%= humanized_money_with_symbol(@bike.price) %></p>
-      <%= form_tag orders_path do %>
-        <%= hidden_field_tag 'bike_id', @bike.id %>
-        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-      <% end %>
-
-      <%= cl_image_tag @bike.photo.key, height: 300, width: 350, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: 'm-1 text-center' %>
+      <div class="purchse mb-2">
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'bike_id', @bike.id %>
+          <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
 
     </div>
   </div>
@@ -19,4 +21,67 @@
   <%= link_to 'Delete', bike_path(@bike), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
 
   <%= link_to "back", root_path %>
+</div>
+
+
+<!--bike REVIEWS!-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mt-4">
+      <h4>Reviews</h4>
+      <% unless !user_signed_in? %>
+        <% pre_review = @bike.reviews.find { |review| review.user_id == current_user.id} %>
+        <% if @bike.reviews.empty? %>
+          <p>Be the first to add a review</p>
+        <% else %>
+          <ul class="list-group">
+            <% @bike.reviews.each do |review| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+                <span class="badge badge-primary badge-pill">
+                  <% counter = 0 %>
+                  <% 5.times do %>
+                    <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                    <% counter += 1 %>
+                  <% end %>
+                </span>
+                <p id="review-<%= review.id %>"><%= review.content %></p>
+              </li>
+              <small>by <%= review.user.nickname  %></small>
+            <% end %>
+          </ul>
+          <% if pre_review %>
+            <%= button_to 'Delete Review', bike_review_path(@bike, pre_review), method: :delete, remote: true %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <ul class="list-group">
+          <% @bike.reviews.each do |review| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+              <span class="badge badge-primary badge-pill">
+                <% counter = 0 %>
+                <% 5.times do %>
+                  <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                  <% counter += 1 %>
+                <% end %>
+              </span>
+              <p id="review-<%= review.id %>"><%= review.content %></p>
+            </li>
+            <small>by <%= review.user.nickname  %></small>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <small> <%= pluralize @bike.reviews.size, "Review" %></small>
+
+      <%= render "reviews/new", bike: @bike, review: @review %>
+
+      <div class='mt-2 mb-2'>
+            <%= link_to 'Edit', edit_bike_path(@bike), class: "btn btn-outline-primary" %> |
+            <%= link_to 'Delete', bike_path(@bike), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
+          <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
+      </div>
+
+    </div>
+  </div>
 </div>

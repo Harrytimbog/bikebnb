@@ -3,16 +3,17 @@
   <div class="row">
     <% @bikes.each do |bike| %>
       <div class="col-12  col-md-6 col-lg-3">
-        <div class="card">
+        <div class="card m-2">
           <%= cl_image_tag bike.photo.key , class: "card-img-top" %>
-          <div class="card-body">
-
-          <%= bike.name  %>
-          <%= bike.category  %>
-          <p>Amount: <%= humanized_money_with_symbol(bike.price) %></p>
-          <%= link_to "", bike_path(bike), class: 'card-link' %>
+          <div class="card-body-infos">
+            <div>
+              <h4><%= bike.name  %></h4>
+              <p><%= bike.category  %></p>
+            </div>
+            <%= cl_image_tag bike.owner.avatar.key, class: "card-body-user avatar-bordered" %>
+            <h4 class="card-body-pricing"><%= humanized_money_with_symbol(bike.price) %></h4>
         </div>
-        <%= cl_image_tag bike.owner.avatar.key, class: "avatar" %>
+            <%= link_to "", bike_path(bike), class: 'card-link' %>
         </div>
       </div>
     <% end %>

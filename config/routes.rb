@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'reviews/create'
+  get 'reviews/destroy'
   devise_for :users
   root to: 'bikes#index'
 
-  resources :bikes
+  resources :bikes do
+    resources :reviews
+  end
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end
