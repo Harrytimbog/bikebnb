@@ -4,6 +4,7 @@ class CreateBikes < ActiveRecord::Migration[6.0]
       t.string :sku
       t.string :name
       t.string :category
+      t.string :address
       t.references :owner, foreign_key: { to_table: :users }
 
       t.timestamps

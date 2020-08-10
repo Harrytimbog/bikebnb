@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_135435) do
+ActiveRecord::Schema.define(version: 2020_08_10_203416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,13 @@ ActiveRecord::Schema.define(version: 2020_08_08_135435) do
     t.string "sku"
     t.string "name"
     t.string "category"
+    t.string "address"
     t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["owner_id"], name: "index_bikes_on_owner_id"
   end
 

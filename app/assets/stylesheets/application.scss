@@ -12,6 +12,9 @@
 @import "components/index";
 @import "pages/index";
 
+// Your CSS partials
+@import "jquery-bar-rating/dist/themes/css-stars";
+
 h1 {
   color: #111d5e;
   font-weight: bolder;
