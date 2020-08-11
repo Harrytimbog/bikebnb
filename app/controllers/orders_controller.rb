@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  skip_after_action :verify_policy_scoped, only: [:create, :show]
+
   def show
     @order = current_user.orders.find(params[:id])
+    authorize @order
   end
 
   def create
@@ -22,5 +25,6 @@ class OrdersController < ApplicationController
 
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
+    authorize bike
   end
 end
