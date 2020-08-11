@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
         render "bikes/show"
       end
     end
+    authorize @bike
   end
 
   def destroy
@@ -40,6 +41,7 @@ class ReviewsController < ApplicationController
 
   def find_review
     @review = @bike.reviews.find(params[:id])
+    authorize @review
   end
 
   def already_reviewed?

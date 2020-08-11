@@ -1,9 +1,11 @@
 class BikesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  skip_after_action :verify_policy_scoped, only: [:index, :show]
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
 
   def index
     @bikes = Bike.all
+    authorize @bikes
   end
 
   def show
@@ -12,6 +14,7 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
@@ -22,6 +25,7 @@ class BikesController < ApplicationController
     else
       render :new, notice: 'something went wrong'
     end
+    authorize @bike
   end
 
   def edit
@@ -38,6 +42,7 @@ class BikesController < ApplicationController
   def destroy
     @bike.destroy
     redirect_to root_path, notice: 'post was successfully destroyed.'
+    authorize @bike
   end
 
   def my_own
@@ -47,6 +52,7 @@ class BikesController < ApplicationController
 
   def set_bike
     @bike = Bike.find(params[:id])
+    authorize @bike
   end
 
   def bike_params
