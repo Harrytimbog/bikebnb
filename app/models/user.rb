@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :orders
   has_one_attached :avatar
   has_many :reviews, dependent: :destroy
+  validates :email, :nickname, presence: true
+  validates :nickname, uniqueness: true
 end
