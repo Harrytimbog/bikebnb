@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :owned_bikes, foreign_key: :owner_id, class_name: "Bike", dependent: :destroy
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_one_attached :avatar
   has_many :reviews, dependent: :destroy
   validates :email, :nickname, presence: true

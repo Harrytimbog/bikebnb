@@ -57,7 +57,7 @@ class BikesController < ApplicationController
 
   def destroy
     @bike.destroy
-    redirect_to root_path, notice: 'post was successfully destroyed.'
+    redirect_to bikes_path, notice: 'post was successfully destroyed.'
     authorize @bike
   end
 
