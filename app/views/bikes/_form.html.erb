@@ -1,4 +1,4 @@
-<%= simple_form_for (@bike) do |f|  %>
+<%= simple_form_for (@bike), remote: true do |f|  %>
   <p><%= f.input :name, label: 'What is your bike\'s name?' %></p>
   <p><%= f.input :sku, label: 'What is the SKU?' %></p>
   <p><%= f.input :category, label: "What's the category of the bike?"  %></p>
