@@ -3,6 +3,7 @@ class Bike < ApplicationRecord
   belongs_to :owner, class_name: "User"
   validates :name, :price_cents, :sku, :photo, :category, :address, presence: true
   has_many :reviews, dependent: :destroy
+  has_many :orders, dependent: :destroy
   monetize :price_cents
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
