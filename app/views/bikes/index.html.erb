@@ -10,7 +10,9 @@
               <h4><%= bike.name  %></h4>
               <p><%= bike.category  %></p>
             </div>
-            <%= cl_image_tag bike.owner.avatar.key, class: "card-body-user avatar-bordered" %>
+            <% if bike.owner.avatar.attached? %>
+              <%= cl_image_tag bike.owner.avatar.key, class: "card-body-user avatar-bordered" %>
+            <% end %>
             <h4 class="card-body-pricing"><%= humanized_money_with_symbol(bike.price) %></h4>
         </div>
             <%= link_to "", bike_path(bike), class: 'card-link' %>
