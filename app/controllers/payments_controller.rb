@@ -5,4 +5,8 @@ class PaymentsController < ApplicationController
     @order = current_user.orders.where(state: 'pending').find(params[:order_id])
     authorize @order
   end
+
+  #def payment
+   # @bike = Restaurant.first.bikes.first
+  #end
 end
