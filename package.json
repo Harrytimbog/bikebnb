@@ -4,17 +4,19 @@
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@rails/activestorage": "^6.1.0",
+    "@rails/ujs": "^6.1.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.2",
+    "channels": "0.0.4",
     "jquery": "^3.5.1",
     "jquery-bar-rating": "^1.2.2",
     "mapbox-gl": "^1.11.1",
     "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
     "sweetalert": "^2.1.2",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.11"
   },
   "version": "0.1.0",
   "devDependencies": {

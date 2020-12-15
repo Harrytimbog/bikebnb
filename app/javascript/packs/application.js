@@ -30,6 +30,7 @@ import "bootstrap";
 import { initStarRating } from '../plugins/init_star_rating';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
+import { loadDynamicBannerText } from '../components/banner';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initAutocomplete();
   initMapbox();
+  loadDynamicBannerText();
 });
